@@ -76,7 +76,7 @@ a:hover {
 }
 
 .border-xl {
-    width: 50%;
+    width: 48%;
     text-align: center;
     border: 0.1rem solid #ff5050;
 }
@@ -114,4 +114,18 @@ input:hover {
 
 .OK {
     width: 2rem;
+}
+
+article {
+    text-align: center;
+}
+
+.yellow {
+    font-family: fantasy;
+    color: yellow;
+}
+
+.padd-xxl {
+    margin-top: 3rem;
+    color: rgb(233, 233, 113);
 }

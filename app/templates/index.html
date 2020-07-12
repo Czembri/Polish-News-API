@@ -83,6 +83,26 @@
                   Retrieve news by SOURCE. 
       </div>
     </div>
+     <div class="row justify-content-center margin-xl">
+        <div class="col d-flex justify-content-center">
+            <div class="border-xl">
+              <p class="start-link"><span color="red">GET</span></p>
+              Enter DATE here:
+              <form action="{{ url_for('get_date') }}" class="form-group margin" method="post">
+                <input type="text" name="DATE"><input type="submit" value="ok">
+              </form>
+            </div>
+        </div>
+      </div>
+      <div class="row justify-content-center margin">
+        <div class="col-sm-5 d-flex justify-content-center">
+          <article>
+                  Retrieve news by DATE. <br>
+                  
+                  <span class='padd-xxl'>QUICK NOTE: </span><span>syntax for date is</span><span class='yellow'> yyyy-mm-dd</span>
+        </article>
+      </div>
+    </div>
     <div class="row justify-content-center margin-xl">
       <div class="col-sm-5 d-flex justify-content-center">
           <span class="red"><a class="sources" target="_blank" href="{{ url_for('get_by_sources') }}">Click</a>to see avaible sources.</span></p>     
@@ -91,7 +111,7 @@
      <div class="row justify-content-center margin-xl">
       <div class="col-sm-5 d-flex justify-content-center">
           <span> 
-            This website is first version of my project. <br>
+            This website is first version of my project. <br><br><br>
             It's gonna be <span class="red">developed</span> soon. <img class= "OK" src="static/img/ok.png" />
           </span>     
       </div>

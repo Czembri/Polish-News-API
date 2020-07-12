@@ -19,21 +19,61 @@ class DB:
 
     def selectAll(self):
         self.mycursor.execute(f"select * from {self.tablename}")
+        columns = [desc[0] for desc in self.mycursor.description]
+        result = []
+        
+        rows = self.mycursor.fetchall()
 
-        myresult = self.mycursor.fetchall()
-        return myresult
+        for row in rows:
+            row = dict(zip(columns, row))
+            result.append(row)
+        return result
 
     def selectByID(self, id):
         self.mycursor.execute(f"select * from {self.tablename} where {self.tablename}_id = {id}")
-        myresult = self.mycursor.fetchall() 
-        return myresult
+        columns = [desc[0] for desc in self.mycursor.description]
+        result = []
+        
+        rows = self.mycursor.fetchall()
+
+        for row in rows:
+            row = dict(zip(columns, row))
+            result.append(row)
+        return result
+
 
     def selectBySRC(self):
         self.mycursor.execute(f"select * from {self.tablename}")
-        myresult = self.mycursor.fetchall() 
-        return myresult
+        columns = [desc[0] for desc in self.mycursor.description]
+        result = []
+        
+        rows = self.mycursor.fetchall()
+
+        for row in rows:
+            row = dict(zip(columns, row))
+            result.append(row)
+        return result
 
     def selectSRC(self):
         self.mycursor.execute("select * from source")
-        myresult = self.mycursor.fetchall() 
-        return myresult
+        columns = [desc[0] for desc in self.mycursor.description]
+        result = []
+        
+        rows = self.mycursor.fetchall()
+
+        for row in rows:
+            row = dict(zip(columns, row))
+            result.append(row)
+        return result
+
+    def selectByDate(self, date):
+        self.mycursor.execute(f"select * from {self.tablename} where scraped='{date}'")
+        columns = [desc[0] for desc in self.mycursor.description]
+        result = []
+        
+        rows = self.mycursor.fetchall()
+
+        for row in rows:
+            row = dict(zip(columns, row))
+            result.append(row)
+        return result

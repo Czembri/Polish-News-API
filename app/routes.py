@@ -5,6 +5,7 @@ import csv
 from flask_language import current_language
 import json
 from app.models import DB
+from datetime import date
 
 # API SECTION
 #retreive data from database
@@ -49,6 +50,8 @@ def main():
   sw = wp.selectAll()
   st = tvn24.selectAll()
   si = interia.selectAll()
+
+
   return jsonify({'News':'All news in one'}, {'Gazeta':sg, 'rmf24':sr, 'WP':sw, 'TVN24':st, 'Interia':si})
 
 
@@ -74,6 +77,16 @@ def get_by_sources():
   src = DB('source').selectSRC()
   return jsonify({'sources':src})
 
+
+@app.route('/polish-news/api/v1/news/bydate/<string:dates>', methods=['GET'])
+def get_by_date(dates):
+  gazetaDts = gazeta.selectByDate(dates)
+  rmfDts = rmf24.selectByDate(dates)
+  tvn24Dts = tvn24.selectByDate(dates)
+  wpDts = wp.selectByDate(dates)
+  interiaDts = interia.selectByDate(dates)
+  return jsonify({'news':'News selected by date'}, {'Gazeta':gazetaDts, 'Rmf24':rmfDts, 'TVN24':tvn24Dts, 'WP':wpDts, 'Interia':interiaDts})
+
 # PAGE SECTION
 
 @app.route('/polish-news')
@@ -89,3 +102,8 @@ def get_id():
 def get_source():
   SOURCE = request.form.get("SOURCE")
   return redirect(url_for('get_by_source', source=SOURCE))
+
+@app.route('/polish-news/get-date', methods=['POST'])
+def get_date():
+  DATE = request.form.get("DATE")
+  return redirect(url_for('get_by_date', dates=DATE))
