@@ -25,7 +25,8 @@ Script <b>scrap.py</b> gets data from sites that contains news and save this dat
  ## Download
  
  > Clone this repo: https://github.com/Czembri/Polish-News-API.git 
- > install vrtual envirement 
+ 
+ > install vrtual environment 
  
  > install requirements by using requirements.txt
  
